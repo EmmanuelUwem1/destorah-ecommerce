@@ -14,7 +14,7 @@ export interface Product {
   id: string;
   name: string;
   description: string;
-  benefits: Benefits;
+  benefits?: Benefits;
   amount?: string; // Make amount optional
   price: string;
   imageUrl: string;

@@ -22,26 +22,26 @@ function HomePage() {
   const [categories, setCategories] = useState<string[]>(["All"]);
   const [selectedCategory, setSelectedCategory] = useState<string>("All");
   const [loading, setLoading] = useState<boolean>(false);
-  const STORE_ID = process.env.NEXT_PUBLIC_STORE_ID;
+  // const STORE_ID = process.env.NEXT_PUBLIC_STORE_ID;
 
   useEffect(() => {
     async function fetchProducts() {
       setLoading(true); // Set loading to true when fetching products
-      if (!STORE_ID) {
-        console.error("STORE_ID is not defined in the environment variables.");
-        return;
-      }
+    
       try {
-        const result = await getProducts(STORE_ID);
-        const products = result?.products;
-        setProducts(products || []); // Use an empty array if result.products is undefined
+        const result = await getProducts();
+        const products = result?.products?.map((product: any) => ({
+          ...product,
+          benefits: product.benefits ?? [], // Ensure benefits is always defined
+        })) || [];
+        setProducts(products); // Use the mapped array
 
         const uniqueCategories = Array.from(
           new Set((products ?? []).map((product) => product.category))
         );
         setCategories(["All", ...uniqueCategories]);
 
-        setFilteredProducts(products || []);
+        setFilteredProducts(products);
       }
       catch (error) {
         console.error("Error fetching products:", error); // Log the error to the console

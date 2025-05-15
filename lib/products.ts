@@ -7,7 +7,7 @@ import { Review } from "@/types/product";
 const BACKEND_URL = process.env.NEXT_PUBLIC_BACKEND_URL;
 
 // Product Types
-type ProductData = {
+export type ProductData = {
   name: string;
   description: string;
   price: string;
@@ -152,42 +152,43 @@ const MockProducts: ProductData[] = [
   },
 ];
 export async function getProducts(
-  storeId: string
-): Promise<{ success: boolean; products?: ProductData[]; message?: string }> {
-  try {
-    // Send a GET request to fetch products for the given store
-    const response = await axios.get(
-      `${BACKEND_URL}/product/store/${storeId}`,
-      {
-        headers: {
-          "Content-Type": "application/json",
-        },
-      }
-    );
 
-    // const products = response.data;
-    console.log("data uploaded: store Id" + storeId ); // Log the store ID and fetched products
-    // Log the fetched products
-    const products = MockProducts;
-    console.log("Fetched products successfully:", products);
+) {
+  // try {
+  //   // Send a GET request to fetch products for the given store
+  //   const response = await axios.get(
+  //     `${BACKEND_URL}/product/store/${storeId}`,
+  //     {
+  //       headers: {
+  //         "Content-Type": "application/json",
+  //       },
+  //     }
+  //   );
+
+  //   // const products = response.data;
+  //   console.log("data uploaded: store Id" + storeId ); // Log the store ID and fetched products
+  //   // Log the fetched products
+  //   const products = MockProducts;
+  //   console.log("Fetched products successfully:", products);
    
-    return { success: true, products };
+  //   return { success: true, products };
     
-  } catch (error: any) {
-    if (axios.isAxiosError(error) && error.response) {
-      const errorMessage =
-        error.response.data?.message || "Failed to fetch products";
-      console.error("Error fetching products:", errorMessage);
-      return { success: false, message: errorMessage, products:MockProducts };
-    }
+  // } catch (error: any) {
+  //   if (axios.isAxiosError(error) && error.response) {
+  //     const errorMessage =
+  //       error.response.data?.message || "Failed to fetch products";
+  //     console.error("Error fetching products:", errorMessage);
+  //     return { success: false, message: errorMessage, products:MockProducts };
+  //   }
 
-    console.error("Unexpected error fetching products:", error);
-    return {
-      success: false,
-      message: "An unexpected error occurred",
+  //   console.error("Unexpected error fetching products:", error);
+  //   return {
+  //     success: false,
+  //     message: "An unexpected error occurred",
  
-      products: MockProducts,
-    };
-  }
+  //     products: MockProducts,
+  //   };
+  // }
+  return {success: true, products:MockProducts}
 }
 

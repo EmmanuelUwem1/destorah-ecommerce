@@ -24,7 +24,12 @@ const router = useRouter();
     router.back(); // Go back to the previous page
   }
   useEffect(() => {
-    const items = JSON.parse(localStorage.getItem('cartItem') || '[]');
+    const items = JSON.parse(localStorage.getItem("cartItem") || "[]").map(
+      (item: any) => ({
+        ...item,
+        price: Number(item.price),
+      })
+    );
     setCartItems(items);
     calculateSubtotal(items);
   }, []);
@@ -109,7 +114,7 @@ const router = useRouter();
                   <div className="flex flex-col justify-start items-start gap-2 pr-4">
                     <p className="text-lg font-medium">{`${item.name}`}</p>
                     <p className="text-lg font-medium text-[#416422]">
-                      {formatCurrency(item.price.toFixed(2))}
+                      {formatCurrency(Number(item.price.toFixed(2)))}
                     </p>
                   </div>
                   <div className="flex items-center gap-0 rounded-sm border border-[#CCCCCC] pt-0">
