@@ -165,9 +165,10 @@ export async function getProducts(
       }
     );
 
-    const products = response.data;
+    // const products = response.data;
     console.log("data uploaded: store Id" + storeId ); // Log the store ID and fetched products
     // Log the fetched products
+    const products = MockProducts;
     console.log("Fetched products successfully:", products);
    
     return { success: true, products };
