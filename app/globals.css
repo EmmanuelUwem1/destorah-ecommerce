@@ -1,0 +1,193 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+*{
+  outline: none;
+}
+html{
+  scroll-behavior: smooth;
+  scroll-padding-top: 7rem;
+}
+@media (max-width: 640px) {
+  html {
+    scroll-padding-top: 4rem;
+  }
+}
+@layer base {
+  :root {
+    --background: #416422;
+    --foreground: 240 10% 3.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 240 10% 3.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 240 10% 3.9%;
+    --primary: #416422;
+    --primary-foreground: 355.7 100% 97.3%;
+    --secondary: 240 4.8% 95.9%;
+    --secondary-foreground: 240 5.9% 10%;
+    --muted: 240 4.8% 95.9%;
+    --muted-foreground: 240 3.8% 46.1%;
+    --accent: 240 4.8% 95.9%;
+    --accent-foreground: 240 5.9% 10%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 240 5.9% 90%;
+    --input: 240 5.9% 90%;
+    --ring: #416422;
+    --radius: 0.5rem;
+  }
+
+  .color {
+    color: #ffd700;
+  }
+
+  .dark {
+    --background: #416422;
+    --foreground: 0 0% 98%;
+    --card: 20 14.3% 4.1%;
+    --card-foreground: 0 0% 98%;
+    --popover: 20 14.3% 4.1%;
+    --popover-foreground: 0 0% 98%;
+    --primary: #416422;
+    --primary-foreground: 144.9 80.4% 10%;
+    --secondary: 240 3.7% 15.9%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 240 3.7% 15.9%;
+    --muted-foreground: 240 5% 64.9%;
+    --accent: 240 3.7% 15.9%;
+    --accent-foreground: 0 0% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 240 3.7% 15.9%;
+    --input: 240 3.7% 15.9%;
+    --ring: 142.4 71.8% 29.2%;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Montserrat', sans-serif;
+  }
+
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  @media (min-width: 1200px) {
+    .responsive {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+  }
+}
+
+@keyframes addToCart {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.add-to-cart-animation {
+  animation: addToCart 0.3s ease-in-out;
+}
+
+.animate-button{
+  transition: all .4s ease;
+  /* width: fit-content; */
+}
+.bg-radial-gradient{
+  background: radial-gradient(ellipse, #e6e6e6ee 50%, #e6e6e600 70%, #e6e6e600 80%, #e6e6e600 90%, #e6e6e600 100%) ;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-attachment: scroll;
+}
+.border-b-not-last-child:not(:last-child){
+  border-bottom: 1px solid #E6E6E6;
+
+}
+.tab-active{
+  position: relative;
+
+}
+.tab-active::before{
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 80%;
+  height: 3px;
+  background-color: #F5B937;
+  align-self: center;
+  border: 1px solid #F5B937;
+  border-top-right-radius: 4rem;
+  border-top-left-radius: 4rem;
+}
+
+.custom-width{
+
+}
+.small-price{
+  display: none;
+}
+@media (min-width: 760px) {
+  .custom-width {
+    width: 4rem;
+    font-size: 14px;
+  }
+}
+@media (min-width: 640px) {
+  .custom-width {
+    width: 4rem;
+    font-size: 14px;
+  }
+}
+@media (max-width: 600px) {
+  .custom-width {
+    width: 8rem;
+    font-size: 14px;
+  }
+}
+@media (max-width: 540px) {
+  .custom-width {
+    width: 4rem;
+    font-size: 12px;
+  }
+}
+@media (max-width: 360px) {
+  .custom-width {
+    width: 3rem;
+    font-size: 12px;
+  }
+}
+@media (max-width: 340px) {
+  .custom-width {
+    width: 100%;
+    font-size: 12px;
+  }
+  .price{
+   display: none;
+  }
+  .small-price{
+    display: block;
+  }
+}
+.dangerously-set-html ul {
+  list-style-image: url("/green tick.png");
+  margin-left: 1rem !important;
+}
+
